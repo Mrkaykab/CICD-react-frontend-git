@@ -41,7 +41,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.PRIVATE_KEY }}
           source: "./dist"
-          target: "/ubuntu"
+          target: "/home/${{ secrets.USER }}"
 
       - name: Install Nginx and Copy code to /var/www/html
         uses: appleboy/ssh-action@master
@@ -56,5 +56,5 @@ jobs:
             echo "Successful Nginx Installation"
             sudo systemctl start nginx
             sudo mkdir -p /var/www/html
-            sudo cp -r /dist/* /var/www/html
+            sudo cp -r /home/${{ secrets.USER }}/dist/* /var/www/html
             sudo systemctl restart nginx
