@@ -41,7 +41,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.PRIVATE_KEY }}
           source: "./dist"
-          target: "/home/${{ secrets.USER }}/temp_dist"
+          target: "/ubuntu/temp_dist"
 
       - name: Install Nginx and Copy code to /var/www/html
         uses: appleboy/ssh-action@master
